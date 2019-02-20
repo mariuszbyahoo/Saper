@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class SaperMain extends Application {
     public static final int TILE_SIZE = 100;
-    private final int BOARD_SIZE = 5;
+    public static final int BOARD_SIZE = 5;
 
     Group tileGroup = new Group();
 
@@ -16,21 +16,21 @@ public class SaperMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Pane root = new Pane();
-        Scene scene = new Scene(root);
-        root.setPrefSize(TILE_SIZE * BOARD_SIZE, TILE_SIZE * BOARD_SIZE);
-        initBoard(tileGroup);
-        root.getChildren().add(tileGroup);
+        Pane pane = new Pane();
+        Scene scene = new Scene(pane);
+        pane.setPrefSize(TILE_SIZE * BOARD_SIZE, TILE_SIZE * BOARD_SIZE);
+        initBoard(tileGroup, pane);
+        pane.getChildren().add(tileGroup);
         stage.setTitle("Saper 0.1");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void initBoard(Group tileGroup){
+    public void initBoard(Group tileGroup, Pane pane){
         TileFactory factory = new TileFactory();
         for (int x = 0; x < BOARD_SIZE; x ++){
             for (int y = 0 ; y < BOARD_SIZE ; y ++){
-                tileGroup.getChildren().add(factory.getInstance(x,y));
+                tileGroup.getChildren().add(factory.getInstance(x,y, pane));
             }
         }
     }
