@@ -1,4 +1,5 @@
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -8,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.Random;
 
 
@@ -33,24 +35,21 @@ public class Tile extends Rectangle {
             if (clickable) {
                 if (!hasBomb) {
                     this.setFill(Color.BEIGE);
+                    // deleting the commentary slashes below will make the game playable and put the bombs in a few places.
                 } else {
-                    System.out.println("To wybuchło");
-                    Pane jihadPane = new AnchorPane();
-                    Stage jihadStage = new Stage();
-                    jihadStage.setTitle("Jihad");
-                    Scene jihadScene = new Scene(jihadPane);
-                    jihadStage.setScene(jihadScene);
-                    jihadStage.show();
+                    jihad();
                     this.setFill(Color.RED);
-                    // Code bellow contains some issue... Plays no video.
-                    String source = "https://www.youtube.com/watch?v=-H0QHwz21-g";
-                    Media media = new Media(source);
-                    MediaPlayer mediaPlayer = new MediaPlayer(media);
-                    mediaPlayer.play();
-                    MediaView mediaView = new MediaView(mediaPlayer);
-                    jihadPane.getChildren().add(mediaView);
                 }
             }
         });
+    }
+    private void jihad () {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("ALLAHU AKHBAAAR");
+        alert.setContentText("Game over");
+        alert.show();
+        String uriString = new File("allahu-akbar-sound-effect-download-link-BMA0XO7C.mp3").toURI().toString();
+        MediaPlayer player = new MediaPlayer( new Media(uriString));
+        player.play();
     }
 }
