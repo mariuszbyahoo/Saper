@@ -1,3 +1,5 @@
+package pl.budzisz.mariusz;
+
 import javafx.scene.control.Alert;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
