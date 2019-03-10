@@ -1,6 +1,7 @@
 package pl.budzisz.mariusz;
 
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -34,7 +35,7 @@ public class Tile extends Rectangle {
                 } else {
                     this.setFill(Color.RED);
                     jihad();
-                    exit();
+                    exit(SaperMain.pane);
 
                 }
             }
@@ -49,8 +50,6 @@ public class Tile extends Rectangle {
         String uriString = new File("allahu-akbar-sound-effect-download-link-BMA0XO7C.mp3").toURI().toString();
         MediaPlayer player = new MediaPlayer( new Media(uriString));
         player.play();
-        clickable = false;
-
     }
     public int getTileId(){
         return tileId;
@@ -59,14 +58,8 @@ public class Tile extends Rectangle {
     public void setHasBomb(boolean hasBomb) {
         this.hasBomb = hasBomb;
     }
-    public void exit() {
-        if (!clickable) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.exit(1);
-        }
+
+    public void exit(Pane pane) {
+        new Thread(new ExitingThread(pane)).start();
     }
 }

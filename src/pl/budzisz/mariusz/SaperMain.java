@@ -12,6 +12,8 @@ public class SaperMain extends Application {
     public static final int TILE_SIZE = 100;
     public static final int BOARD_SIZE = 5;
 
+    public static Pane pane;
+
     Group tileGroup = new Group();
 
     public static void main (String [] args){
@@ -20,7 +22,7 @@ public class SaperMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Pane pane = new Pane();
+        pane = new Pane();
         Scene scene = new Scene(pane);
         pane.setPrefSize(TILE_SIZE * BOARD_SIZE, TILE_SIZE * BOARD_SIZE);
         initBoard(tileGroup, pane);
