@@ -34,7 +34,7 @@ public class Tile extends Rectangle {
                     this.setFill(Color.BEIGE);
                 } else {
                     this.setFill(Color.RED);
-                    jihad();
+                    explosion();
                     exit(SaperMain.pane);
 
                 }
@@ -42,12 +42,12 @@ public class Tile extends Rectangle {
         });
         tileId = count.incrementAndGet();
     }
-    private void jihad () {
+    private void explosion() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("ALLAHU AKHBAAAR");
+        alert.setTitle("Saper fails only once...");
         alert.setContentText("Game over");
         alert.show();
-        String uriString = new File("allahu-akbar-sound-effect-download-link-BMA0XO7C.mp3").toURI().toString();
+        String uriString = new File("Explosion Sounds - Free Sound Effects - Explosion Sound Clips - Sound Bites.MP3").toURI().toString();
         MediaPlayer player = new MediaPlayer( new Media(uriString));
         player.play();
     }
