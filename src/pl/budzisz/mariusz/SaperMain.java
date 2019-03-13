@@ -31,7 +31,6 @@ public class SaperMain extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public void initBoard(Group tileGroup, Pane pane){
         TileFactory factory = new TileFactory();
         for (int x = 0; x < BOARD_SIZE; x ++){
